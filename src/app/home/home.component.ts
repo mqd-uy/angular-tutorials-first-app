@@ -29,6 +29,9 @@ import { HousingService } from '../housing.service';
 })
 
 export class HomeComponent {
+  inputChange() {
+    console.log('input changed');
+  }
   housingLocationList: HousingLocation[];
   housingService: HousingService = inject(HousingService);
 
