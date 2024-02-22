@@ -40,12 +40,14 @@ export class HomeComponent {
   inputChange() {
     console.log('input changed');
   }
-  housingLocationList: HousingLocation[];
+  housingLocationList!: HousingLocation[];
   filteredLocationList: HousingLocation[] = [];
   housingService: HousingService = inject(HousingService);
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
+    this.housingService.getAllHousingLocations().then((data: HousingLocation[]) => {
+      this.housingLocationList = data
+      this.filteredLocationList = this.housingLocationList;
+    })
   }
 }
